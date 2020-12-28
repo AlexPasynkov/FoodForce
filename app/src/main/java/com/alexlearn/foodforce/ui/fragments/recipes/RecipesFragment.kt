@@ -16,13 +16,17 @@ import com.alexlearn.foodforce.viewmodels.MainViewModel
 import com.alexlearn.foodforce.R
 import com.alexlearn.foodforce.adapters.RecipesAdapter
 import com.alexlearn.foodforce.databinding.FragmentRecipesBinding
+import com.alexlearn.foodforce.util.NetworkListener
 import com.alexlearn.foodforce.util.NetworkResult
 import com.alexlearn.foodforce.util.observeOnce
 import com.alexlearn.foodforce.viewmodels.RecipesViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_recipes.view.*
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
+@ExperimentalCoroutinesApi
 @AndroidEntryPoint
 class RecipesFragment : Fragment() {
 
@@ -35,6 +39,8 @@ class RecipesFragment : Fragment() {
     private lateinit var mainViewModel: MainViewModel
     private lateinit var recipesViewModel: RecipesViewModel
     private val mAdapter by lazy { RecipesAdapter() }
+
+    private lateinit var networkListener: NetworkListener
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,6 +61,14 @@ class RecipesFragment : Fragment() {
 
         setupRecyclerView()
         readDatabase()
+
+       lifecycleScope.launch {
+           networkListener = NetworkListener()
+           networkListener.checkNetworkAvailability(requireContext())
+               .collect{status ->
+                   Log.d("NetworListener", status.toString())
+               }
+       }
 
         binding.recipesFab.setOnClickListener{
             findNavController().navigate(R.id.action_recipesFragment_to_recipesBottomSheet)
