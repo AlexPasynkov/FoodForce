@@ -45,7 +45,7 @@
                 tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
-                android:id="@+id/ingredient_main"
+                android:id="@+id/ingredient_name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
@@ -66,8 +66,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:text="100"
-                app:layout_constraintStart_toStartOf="@+id/ingredient_main"
-                app:layout_constraintTop_toBottomOf="@+id/ingredient_main" />
+                android:textColor="@color/titleColor"
+                app:layout_constraintStart_toStartOf="@+id/ingredient_name"
+                app:layout_constraintTop_toBottomOf="@+id/ingredient_name" />
 
             <TextView
                 android:id="@+id/ingredient_unit"
@@ -75,6 +76,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="Grams"
+                android:textColor="@color/titleColor"
                 app:layout_constraintBottom_toBottomOf="@+id/ingredient_amount"
                 app:layout_constraintStart_toEndOf="@+id/ingredient_amount"
                 app:layout_constraintTop_toTopOf="@+id/ingredient_amount" />
@@ -86,6 +88,7 @@
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="12dp"
                 android:text="Consistency"
+                android:textColor="@color/titleColor"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/ingredient_amount"
                 app:layout_constraintTop_toBottomOf="@+id/ingredient_amount" />
@@ -98,6 +101,7 @@
                 android:layout_marginEnd="12dp"
                 android:layout_marginBottom="12dp"
                 android:text="Original"
+                android:textColor="@color/titleColor"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/ingredient_consistency"
