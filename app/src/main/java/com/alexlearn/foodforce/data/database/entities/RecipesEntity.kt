@@ -1,4 +1,4 @@
-package com.alexlearn.foodforce.data.database
+package com.alexlearn.foodforce.data.database.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
