@@ -80,7 +80,6 @@ class RecipesRowBinding {
             }
         }
 
-
         @BindingAdapter("parseHtml")
         @JvmStatic
         //Removing html tags from recipes text
