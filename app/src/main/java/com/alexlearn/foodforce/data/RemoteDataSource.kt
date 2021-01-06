@@ -1,6 +1,7 @@
 package com.alexlearn.foodforce.data
 
 import com.alexlearn.foodforce.data.network.FoodRecipesApi
+import com.alexlearn.foodforce.models.FoodJoke
 import com.alexlearn.foodforce.models.FoodRecipe
 import retrofit2.Response
 import javax.inject.Inject
@@ -17,4 +18,7 @@ class RemoteDataSource @Inject constructor(
         return foodRecipesApi.searchRecipes(searchQuery)
     }
 
+    suspend fun getFoodJoke(apiKey: String): Response<FoodJoke>{
+        return foodRecipesApi.getFoodJoke(apiKey)
+    }
 }

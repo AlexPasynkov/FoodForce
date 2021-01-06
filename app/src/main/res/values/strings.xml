@@ -29,6 +29,7 @@
     <string name="whole30">Whole30</string>
     <string name="apply">Apply</string>
     <string name="snack">Snack</string>
+
     <string name="search">Search</string>
     <string name="title">Title</string>
     <string name="vegetarian">Vegetarian</string>
@@ -39,4 +40,6 @@
     <string name="no_favorite_recipes">No Favorite Recipes.</string>
     <string name="delete_favorite_item">Delete Favorite Item</string>
     <string name="delete_all">Delete All</string>
+
+    <string name="lorem_ipsum">Formula One (also known as Formula 1 or F1) is the highest class of international auto racing for single-seater racing cars sanctioned.</string>
 </resources>
