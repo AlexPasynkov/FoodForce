@@ -1,8 +1,12 @@
 package com.alexlearn.foodforce.data
 
 import android.content.Context
-import androidx.datastore.DataStore
+import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.*
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.emptyPreferences
+import androidx.datastore.preferences.core.preferencesKey
 import com.alexlearn.foodforce.util.Constants
 import com.alexlearn.foodforce.util.Constants.Companion.DEFAULT_MEAL_TYPE
 import com.alexlearn.foodforce.util.Constants.Companion.PREFERENCES_BACK_ONLINE
