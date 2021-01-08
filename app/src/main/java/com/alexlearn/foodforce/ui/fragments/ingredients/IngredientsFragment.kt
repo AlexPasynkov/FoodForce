@@ -8,33 +8,42 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.alexlearn.foodforce.R
 import com.alexlearn.foodforce.adapters.IngredientsAdapter
+import com.alexlearn.foodforce.databinding.FragmentIngredientsBinding
 import com.alexlearn.foodforce.models.Result
 import com.alexlearn.foodforce.util.Constants.Companion.RECIPE_RESULT_KEY
-import kotlinx.android.synthetic.main.fragment_ingredients.view.*
+
 
 class IngredientsFragment : Fragment() {
 
     private val mAdapter: IngredientsAdapter by lazy { IngredientsAdapter() }
 
+    private var _binding: FragmentIngredientsBinding? = null
+    private val binding get() = _binding!!
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_ingredients, container, false)
+        _binding = FragmentIngredientsBinding.inflate(inflater, container, false)
 
         val args = arguments
         val myBundle: Result? = args?.getParcelable(RECIPE_RESULT_KEY)
 
-        setupRecyclerView(view)
+        setupRecyclerView()
         myBundle?.extendedIngredients?.let { mAdapter.setData(it) }
 
-        return view
+        return binding.root
     }
 
-    private fun setupRecyclerView(view: View){
-        view.ingredients_recyclerView.adapter = mAdapter
-        view.ingredients_recyclerView.layoutManager = LinearLayoutManager(requireContext())
+    private fun setupRecyclerView(){
+        binding.ingredientsRecyclerView.adapter = mAdapter
+        binding.ingredientsRecyclerView.layoutManager = LinearLayoutManager(requireContext())
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
 }

@@ -13,7 +13,7 @@ import com.alexlearn.foodforce.databinding.FragmentFavoriteRecipesBinding
 import com.alexlearn.foodforce.viewmodels.MainViewModel
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_favorite_recipes.view.*
+
 
 @AndroidEntryPoint
 class FavoriteRecipesFragment : Fragment() {
@@ -28,7 +28,7 @@ class FavoriteRecipesFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
     _binding = FragmentFavoriteRecipesBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
@@ -59,12 +59,6 @@ class FavoriteRecipesFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
-        //without this ifActionMode is ON ot will not be closed if I change the fragment
-        mAdapter.clearContextualActionMode()
-    }
 
     private fun showSnackBar(){
         Snackbar.make(
@@ -74,5 +68,13 @@ class FavoriteRecipesFragment : Fragment() {
         ).setAction("Okay"){}
             .show()
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+        //without this ifActionMode is ON ot will not be closed if I change the fragment
+        mAdapter.clearContextualActionMode()
+    }
+
 
 }
